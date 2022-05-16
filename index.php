@@ -12,6 +12,13 @@ $goods = [
     ['Name'=>'Куртка для сноуборда DC Mutiny Charocal','Category'=>'Одежда','price'=>7500,'Url'=>'img/lot-5.jpg'],
     ['Name'=>'Маска Oakley Canopy','Category'=>'Разное','price'=>5400,'Url'=>'img/lot-6.jpg'],
 ];
+function timer()
+{
+    $date= strtotime('2022-05-12 24:00');
+    $ntime= time();
+    $difference= $date-$ntime;
+    return gmdate('H:i', $difference);
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -42,7 +49,7 @@ $goods = [
                     <img src="img/user.jpg" width="40" height="40" alt="Пользователь">
                 </div>
                 <div class="user-menu__logged">
-                    <p><?php echo $user_name ?></p>
+                    <p><?=$user_name ?></p>
                 </div>
             <?php else: ?>
                 <ul class="user-menu__list">
@@ -65,7 +72,7 @@ $goods = [
         <ul class="promo__list">
             <?php foreach($categories as $category) { ?>
                 <li class="promo__item promo__item--boards">
-                    <a class="promo__link" href="pages/all-lots.html"><?php echo $category?></a>
+                    <a class="promo__link" href="pages/all-lots.html"><?= $category?></a>
                 </li>
             <?php } ?>
         </ul>
@@ -78,18 +85,18 @@ $goods = [
             <?php foreach ($goods as $g) { ?>
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?php echo $g['Url']?>" width="350" height="260" alt="">
+                    <img src="<?=$g['Url']?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?php echo $g['Category']?></span>
-                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?php echo $g['Name']?></a></h3>
+                    <span class="lot__category"><?=$g['Category']?></span>
+                    <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?= $g['Name']?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?php echo $g['price']?><b class="rub">р</b></span>
+                            <span class="lot__cost"><?= $g['price']?></span>
                         </div>
                         <div class="lot__timer timer">
-                            12:23
+                            <?= timer()?>
                         </div>
                     </div>
                 </div>
@@ -105,7 +112,7 @@ $goods = [
         <ul class="nav__list container">
             <?php foreach($categories as $category) { ?>
                 <li class="nav__item">
-                    <a href="pages/all-lots.html"><?php echo $category?></a>
+                    <a href="pages/all-lots.html"><?= $category?></a>
                 </li>
             <?php } ?>
         </ul>
