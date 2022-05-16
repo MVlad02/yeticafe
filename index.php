@@ -6,12 +6,20 @@ $categories = array('Доски и лыжи', 'Крепления', 'Ботин�
 
 $goods = [
     ['Name'=>'2014 Rossignol District Snowboard','Category'=>'Доски и лыжи','price'=>10999,'Url'=>'img/lot-1.jpg'],
-    ['Name'=>'DC Ply Mens 2016/2017 Snowboard','Category'=>'Доски и лыжи','price'=>159999,'Url'=>'img/lot-2.jpg'],
+    ['Name'=>'DC Ply Mens 2016/2017 Snowboard','Category'=>'Доски и лыжи','price'=>15999,'Url'=>'img/lot-2.jpg'],
     ['Name'=>'Крепления Union Contact Pro 2015 года размер L/XL','Category'=>'Крепления','price'=>8000,'Url'=>'img/lot-3.jpg'],
     ['Name'=>'Ботинки для сноуборда DC Mutiny Charocal','Category'=>'Ботинки','price'=>10999,'Url'=>'img/lot-4.jpg'],
     ['Name'=>'Куртка для сноуборда DC Mutiny Charocal','Category'=>'Одежда','price'=>7500,'Url'=>'img/lot-5.jpg'],
     ['Name'=>'Маска Oakley Canopy','Category'=>'Разное','price'=>5400,'Url'=>'img/lot-6.jpg'],
 ];
+function price ($price) {
+    $price =ceil($price);
+    if ($price >= 1000){
+        $result = number_format($price,0,'.',' ');
+    }
+    else $result = $price;
+    return $result . ' ₽';
+}
 function timer()
 {
     $date= strtotime('2022-05-12 24:00');
@@ -93,7 +101,7 @@ function timer()
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?= $g['price']?></span>
+                            <span class="lot__cost"><?= price($g['price'])?></span>
                         </div>
                         <div class="lot__timer timer">
                             <?= timer()?>
