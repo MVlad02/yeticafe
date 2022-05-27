@@ -17,7 +17,7 @@ else {
         $error = mysqli_error($link);
         $content = include_template('error.php', ['error' => $error]);
     }
-    $sql1 = 'SELECT * FROM goods';
+    $sql1 = 'SELECT * FROM goods inner join category on goods.id_category=category.category_id';
     $result = mysqli_query($link, $sql1);
 
     if ($result) {

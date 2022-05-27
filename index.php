@@ -2,8 +2,6 @@
 require_once('functions.php');
 require_once('bd.php');
 
-$is_auth = rand(0, 1);
-$user_name = 'Влад';
 $main = include_template(
     'index.php',
     [
